@@ -18,28 +18,28 @@ public class AllureReportListener implements ITestListener {
     }
 
     @Override
-    public void onStart(ITestContext iTestContext) {
+    public void onStart(ITestContext iTestContext) { // вызовится когда тесты запускаем
         System.out.println("Starting Test Suite '" + iTestContext.getName() + "'.......");
         iTestContext.setAttribute("WebDriver", getDriver());
     }
 
     @Override
-    public void onFinish(ITestContext iTestContext) {
+    public void onFinish(ITestContext iTestContext) {// вызовится когда тест закончится
         System.out.println("Finished Test Suite '" + iTestContext.getName() + "'");
     }
 
     @Override
-    public void onTestStart(ITestResult iTestResult) {
+    public void onTestStart(ITestResult iTestResult) {// вызовится перед началом теста
         System.out.println("Starting Test Method '" + getTestMethodName(iTestResult) + "'");
     }
 
     @Override
-    public void onTestSuccess(ITestResult iTestResult) {
+    public void onTestSuccess(ITestResult iTestResult) {// вызовится когда тест успешно пройден
         System.out.println("Test Method '" + getTestMethodName(iTestResult) + "' is Passed");
     }
 
     @Override
-    public void onTestFailure(ITestResult iTestResult) {
+    public void onTestFailure(ITestResult iTestResult) {// вызовится когда тест упадет в консоле покажет и зделает скриншот
         System.out.println("Test Method '" + getTestMethodName(iTestResult) + "' is Failed");
         if (getDriver() != null) {
             System.out.println("Screenshot has captured for the Test Method '" + getTestMethodName(iTestResult) + "'");

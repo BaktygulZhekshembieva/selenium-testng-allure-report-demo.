@@ -2,32 +2,39 @@ package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends BasePage {
-
-    private final By emailTextBox = By.id("email");
-    private final By passwordTextBox = By.id("passwd");
-    private final By signInButton = By.id("SubmitLogin");
+public class LoginPage extends BasePage{
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-    public void setEmail(String email) {
-        sendKeys(emailTextBox, email);
+    private final By usernameInputField = By.id("user-name");
+    private final By passwordInputField = By.id("password");
+    private final By loginButton = By.id("login-button");
+    private final By errorMessageElement = By.xpath("//h3[text()='Epic sadface: Username and password do not match any user in this service']");
+    public final String expectedErrorMessage = "Epic sadface: Username and password do not match any user in this service";
+
+    public LoginPage fillUsername(String username){
+        sendKeys(usernameInputField,username);
+        return this;
     }
 
-    public void setPassword(String password) {
-        sendKeys(passwordTextBox, password);
+    public LoginPage fillPassword(String password){
+        sendKeys(passwordInputField,password);
+        return this;
     }
 
-    public void clickSignIn() {
-        click(signInButton);
+    public LoginPage clickLoginButton(){
+        click(loginButton);
+        return this;
     }
 
-    public void login(String email, String password) {
-        setEmail(email);
-        setPassword(password);
-        clickSignIn();
+    public String getErrorMessage(){
+        return getText(errorMessageElement);
     }
+
+
 }

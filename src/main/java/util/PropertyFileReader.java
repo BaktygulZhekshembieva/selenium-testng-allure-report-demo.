@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class PropertyFileReader {
+public class PropertyFileReader { //читает данные с пропертиес
 
     public static String getProperty(String propertyName) {
         String propertyValue = null;

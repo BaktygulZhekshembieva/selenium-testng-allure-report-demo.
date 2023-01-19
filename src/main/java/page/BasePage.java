@@ -45,4 +45,11 @@ public class BasePage {
         waitUntilElementVisible(by);
         driver.findElement(by).sendKeys(text);
     }
+
+    public String getText(By by){
+        waitUntilElementVisible(by);
+        return driver.findElement(by).getText();
+    }
+
+
 }
