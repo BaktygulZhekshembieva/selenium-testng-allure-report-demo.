@@ -11,7 +11,7 @@ import static util.driver.DriverHolder.setDriver;
 
 public class BaseTest {
 
-//    TextBoxPage textBoxPage;
+    TextBoxPage textBoxPage;
 
     @BeforeMethod
     public void before() {
